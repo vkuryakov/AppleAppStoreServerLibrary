@@ -1,0 +1,7 @@
+.vs/
+/**/[bB]in/
+/**/[oO]bj/
+/.idea
+/**/.idea
+packages/
+/**/node_modules
