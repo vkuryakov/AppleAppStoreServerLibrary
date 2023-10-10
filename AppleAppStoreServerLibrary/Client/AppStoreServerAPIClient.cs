@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -22,7 +23,6 @@ namespace AppleAppStoreServerLibrary.Client
         private readonly HttpClient _httpClient;
         private readonly BearerTokenAuthenticator _bearerTokenAuthenticator;
         private readonly Uri _urlBase;
-        //private readonly Gson gson;
 
         public AppStoreServerAPIClient(string signingKey, string keyId, string issuerId, string bundleId, AppleEnvironment environment)
         {
@@ -37,7 +37,6 @@ namespace AppleAppStoreServerLibrary.Client
 
         private HttpRequestMessage BuildRequest(string path, HttpMethod method, Dictionary<string, List<string>> queryParameters, object jsonBody = null)
         {
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(method, path);
             if (queryParameters != null && queryParameters.Count > 0)
             {
                 var query = HttpUtility.ParseQueryString(string.Empty);
@@ -50,6 +49,7 @@ namespace AppleAppStoreServerLibrary.Client
                 }
                 path += "?" + query.ToString();
             }
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(method, path);
             if (jsonBody != null && method == HttpMethod.Post)
             {
                 string body = JsonSerializer.Serialize(jsonBody);

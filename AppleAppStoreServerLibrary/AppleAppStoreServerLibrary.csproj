@@ -96,6 +96,7 @@
     <Compile Include="Client\APIException.cs" />
     <Compile Include="Client\AppStoreServerAPIClient.cs" />
     <Compile Include="Client\BearerTokenAuthenticator.cs" />
+    <Compile Include="Model\AutoRenewableSubscriptionStatus.cs" />
     <Compile Include="Receipts\ReceiptDecoder.cs" />
     <Compile Include="Model\AppleEnvironment.cs" />
     <Compile Include="Model\ErrorPayload.cs" />

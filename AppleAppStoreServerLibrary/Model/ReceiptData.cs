@@ -8,9 +8,11 @@ namespace AppleAppStoreServerLibrary.Model
 {
     public class ReceiptData
     {
+        // ASN.1 Field Type 0 (Environment)
+        public AppleEnvironment Environment { get; set; }
         // ASN.1 Field Type 1703 (Transaction ID)
-        // ASN.1 Field Type 1705 (Origignal Transaction ID)
-        public string TransactionID { get; set; }
+        // ASN.1 Field Type 1705 (Original Transaction ID)
+        public List<string> OriginalTransactionIDs { get; set; } = new List<string>();
         //ASN.1 Field Type 2
         public string BundleId { get; set; }
         //ASN.1 Field Type 3
@@ -19,5 +21,7 @@ namespace AppleAppStoreServerLibrary.Model
         public byte[] SHA1Hash { get; set; }
         //ASN.1 Field Type 12
         public DateTime ReceiptCreationDate { get; set; }
+        public string ProductId { get; set; }
+        public bool IsSignatureValid { get; set; } = false;
     }
 }
